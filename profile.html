@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task Management Dashboard</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    display: flex;
+    height: 100%;
+    background-color: #F9FAFB;
+    color: #111827;
+  }
+  
+  .container {
+    display: flex;
+    width: 100%;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background-color: #1F2937;
+    padding: 20px;
+    color: #FFFFFF;
+    height: 183%;
+  }
+  
+  .logo {
+    font-size: 26px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+  }
+  
+  nav ul li {
+    padding: 12px 0;
+    cursor: pointer;
+    color: #D1D5DB;
+  }
+  
+    nav ul li a {
+     display: block;
+     padding: 5px;
+     text-decoration: none;
+     color: inherit;
+    }
+  
+  nav ul li:hover,
+  nav ul li.active {
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .search {
+    padding: 8px 12px;
+    width: 220px;
+    border: 1px solid #D1D5DB;
+    border-radius: 4px;
+  }
+  
+  .notifications,
+  .profile {
+    margin-left: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    font-size: large;
+    font-style:italic;
+  }
+
+  
+  .profile-card {
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    margin-left: 50px;
+    color: white;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 80px;
+    height: 80px;
+    background-color: #94a3b8;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+  }
+  
+  .job-title {
+    font-style: italic;
+    color: #cbd5e1;
+  }
+  
+  .role {
+    display: inline-block;
+    background-color: #38bdf8;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+  }
+  
+  .details p {
+    text-align: left;
+    margin: 5px 0;
+  }
+  
+  .work-schedule button {
+    margin-top: 15px;
+    background-color: #3b82f6;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+  
+
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">EasyTask</div>
+      <nav>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+           <li><a href="mytask.html">My task</a></li>
+           <li><a href="messages.html">Messages</a></li>
+           <li><a href="calendar.html">Calendar</a></li>
+           <li><a href="settings.html">Settings</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="title">Hello Tejesh</div>
+        <input type="text" class="search" placeholder="Search here...">
+        <div class="notifications" >🔔</div>
+        <div class="profile"><a href="profile.html">👤profile</a></div>
+      </header>
+
+      <div class="profile-card">
+        <img class="profile-image" src=https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg alt="profile-image">
+        <p class="job-title">Add a job title</p>
+        <span class="role">Admin</span>
+    
+        <div class="details">
+          <p><strong>Email:</strong> tejeshtirupati@gmail.com</p>
+          <p><strong>Phone:</strong> 6301547895</p>
+          <p><strong>Gender:</strong>Male</p>
+          <p><strong>Location:</strong> Bangalore</p>
+        </div>
+    
+        <div class="work-schedule">
+          <button>add skype</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>
