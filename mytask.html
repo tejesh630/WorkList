@@ -221,7 +221,8 @@
     font-weight:500;
     font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
     font-style: oblique;
-
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 
   }
   .task-card {
@@ -232,6 +233,8 @@
     border: 1px solid #9caca4;
     text-align: center;
     font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
   }
   
   .task-card:hover {
@@ -280,61 +283,49 @@
         </div>
       </div>
 
-      <script>
-        function openForm(){
-          document.getElementById("myForm").style.display = "block";
-        }
-
-        function closeForm() {
-          document.getElementById("myForm").style.display = "none";
-        }
-        function addlist() {
-         let newtask = document.createElement("div");
-          let getvalue =  document.getElementById("inputfield").value;
-          newtask.textContent = getvalue;
-          document.getElementById("column_1").appendChild(newtask);
-          newtask.classList.add("task-card1");
-   
-        }
-      </script>
-
-
-      </section>
-
       <section class="task-board">
         <div id="column_1">
-          <h3>All Tasks</h3>
-          <div class="task-card1">Make a new Homepage</div>
-          <div class="task-card1">Make Wireframe & Sketch</div>
-          <div class="task-card1">Website redesign</div>
-          <div class="task-card1">Correct Wireframe blue print</div>
-          <div class="task-card1">Design database</div>
-          <div class="task-card1">Design Backend</div>
-          <div class="task-card1">Sketch the UI</div>
+          <h3>Pending Tasks</h3>
         </div>
         <div id="column_2">
           <h3>In Progress</h3>
-          <div class="task-card">HOLD</div>
-          <div class="task-card">completed</div>
-          <div class="task-card">Working</div>
-          <div class="task-card">completed</div>
-          <div class="task-card">completed</div>
-          <div class="task-card">HOLD</div>
-          <div class="task-card">completed</div>
         </div>
         <div id="column_3">
           <h3>Done</h3>
-          <div class="task-card">Error</div>
-          <div class="task-card">Success</div>
-          <div class="task-card">Working</div>
-          <div class="task-card">Success</div>
-          <div class="task-card">Success</div>
-          <div class="task-card">Error</div>
-          <div class="task-card">Success</div>
         </div>
       </section>
 
     </main>
   </div>
+
+  <script src="index.js"></script>
+  <script>
+    function openForm(){
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    
+    function addlist() {
+      let newtask = document.createElement("div");
+      let getvalue = document.getElementById("inputfield").value;
+      if (getvalue.trim() === '') return;
+      
+      newtask.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 5px;">${getvalue}</div>
+        <div style="font-size: 12px; color: #666; margin-bottom: 3px;">Due: ${new Date().toLocaleDateString()}</div>
+        <div style="font-size: 11px; color: #888;">User added task</div>
+      `;
+      
+      document.getElementById("column_1").appendChild(newtask);
+      newtask.classList.add("task-card1");
+      
+      // Clear input
+      document.getElementById("inputfield").value = '';
+      closeForm();
+    }
+  </script>
 </body>
 </html>
