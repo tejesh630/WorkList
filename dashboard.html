@@ -1,600 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Task Management Dashboard</title>
-  <style>
-    * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    display: flex;
-    height: 100%;
-    background-color: #F9FAFB;
-    color: #111827;
-  }
-  
-  .container {
-    display: flex;
-    width: 100%;
-  }
-  
-  .sidebar {
-    width: 220px;
-    background-color: #1F2937;
-    padding: 20px;
-    color: #FFFFFF;
-    height: 100%;
-  }
-  
-  .logo {
-    font-size: 26px;
-    margin-bottom: 30px;
-    font-weight: bold;
-  }
-  
-  nav ul {
-    list-style: none;
-  }
-  
-  nav ul li {
-    padding: 12px 0;
-    cursor: pointer;
-    color: #D1D5DB;
-  }
-
-    nav ul li a {
-     display: block;
-     padding: 5px;
-     text-decoration: none;
-     color: inherit;
-    }
-    
-  
-  nav ul li:hover,
-  nav ul li.active {
-    color: #FFFFFF;
-    font-weight: bold;
-  }
-
-    
-    nav ul li a:hover {
-     background-color: #3b485a;
-    }
-  
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .search {
-    padding: 8px 12px;
-    width: 220px;
-    border: 1px solid #D1D5DB;
-    border-radius: 4px;
-  }
-  
-  .notifications,
-  .profile {
-    margin-left: 15px;
-    font-size: 20px;
-    cursor: pointer;
-    font-size: large;
-  }
-  
-  .filters {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .filters button {
-    padding: 8px 15px;
-    border: none;
-    background-color: #E5E7EB;
-    color: #111827;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .filters button:hover {
-    background-color: #D1D5DB;
-  }
-  
-  .filters .quick {
-    background-color: #4b43f0;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .add-task {
-  background-color: #555;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  width: 280px;
-  margin-bottom: 15px;
-  font-size: medium;
-  border-radius: 5px;
-  }
-
-.popup {
-  display: none;
-  border: 3px solid #f1f1f1;
-  margin-bottom: 20px;
-}
-
-.popup-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
-.popup-container input[type=text] {
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  border-radius: 3px;
-}
-
-
-.popup-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-  border-radius: 4px;
-}
-  .popup-container .close {
-  background-color: red;
-}
-  .popup-container .btn:hover{
-  opacity: 2;
-  }
-
-  .popup-container .btnclose:hover {
-    opacity: 2;
-  }
-  
-  .task-board {
-    display:flex;
-    gap: 20px;
-  }
-  
-  #column_1 {
-    background-color: #FFFFFF;
-    flex: 1;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-   #column_2 {
-    background-color: #FFFFFF;
-    flex: 1;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    
-  }
-  #column_3 {
-    background-color: #FFFFFF;
-    flex: 1;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  
-  #column h3 {
-    margin-bottom: 12px;
-    font-size: 18px;
-    color: #4B5563;
-  }
-  
-  .task-card1{
-   
-    background-color: #D6E4F0;
-    padding: 16px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    border: 1px solid #9caca4;
-    font-weight:500;
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-    font-style: oblique;
-
-
-  }
-  .task-card {
-    background-color: #D6E4F0;
-    padding: 16px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    border: 1px solid #9caca4;
-    text-align: center;
-    font-weight: 500;
-  }
-  
-  .task-card:hover {
-    background-color: #a5f3b6;
-  }
-
-  .task-card1:hover {
-    background-color: #9cd0f3;
-  }
-
-  .chart-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    max-width: 300px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-
-  h3 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .pie-chart {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: auto;
-    background: conic-gradient(
-      #f87171 0% 20%,    
-      #60a5fa 20% 60%,   
-      #34d399 60% 100%    
-    );
-  }
-
-  .legend {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 14px;
-    padding-left: 20px;
-  }
-
-  
-
-  .color-box {
-    width: 12px;
-    height: 12px;
-    margin-right: 8px;
-    border-radius: 2px;
-    display: inline-block;
-  }
-
-  .todo { background: #f87171; }
-  .inprogress { background: #60a5fa; }
-  .done { background: #34d399; }
-  
-  
-  
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management Dashboard - EasyTask</title>
+  <link rel="stylesheet" href="dashboard.css">
 </head>
-<body onload="renderAlltasks()">
+<body onload="renderTaskTable()">
+  <!-- Main Container -->
   <div class="container">
-    <div class="sidebar">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
       <div class="logo">EasyTask</div>
       <nav>
-         <ul>
-           <li class="active"><a href="dashboard.html">Dashboard</a></li>
-           <li><a href="mytask.html">My task</a></li>
-           <li><a href="messages.html">Messages</a></li>
-           <li><a href="calendar.html">Calendar</a></li>
-           <li><a href="settings.html">Settings</a></li>
-         </ul>
-        </nav>
-      </div>
+        <ul>
+          <li class="active">
+            <a href="dashboard.html">Dashboard</a>
+          </li>
+          <li>
+            <a href="mytask.html">My task</a>
+          </li>
+          <li>
+            <a href="messages.html">Messages</a>
+          </li>
+          <li>
+            <a href="calendar.html">Calendar</a>
+          </li>
+          <li>
+            <a href="settings.html">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
         
-    <main class="main-content" >
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Bar -->
       <header class="topbar">
         <div class="title">Hello Tejesh</div>
-        <input type="text" class="search" placeholder="Search here...">
-        <div class="notifications">🔔</div>
-        <div class="profile"><a href="profile.html">👤profile</a></div>
+        <input 
+          type="text" 
+          class="search" 
+          placeholder="Search tasks..."
+          aria-label="Search tasks"
+        >
+        <div class="notifications" title="Notifications">🔔</div>
+        <div class="profile">
+          <a href="profile.html" title="Profile">👤 Profile</a>
+        </div>
       </header>
 
+      <!-- Filter Buttons -->
       <section class="filters">
-        <button id="duetask">Overdue</button>
-        <button>Upcoming</button>
-        <button>By Status</button>
-        <button class="quick">Quick Actions</button>
+        <button 
+          onclick="filterTasks('all')" 
+          class="active" 
+          id="filter-all"
+        >
+          All Tasks
+        </button>
+        <button 
+          onclick="filterTasks('pending')" 
+          id="filter-pending"
+        >
+          Pending
+        </button>
+        <button 
+          onclick="filterTasks('progress')" 
+          id="filter-progress"
+        >
+          In Progress
+        </button>
+        <button 
+          onclick="filterTasks('done')" 
+          id="filter-done"
+        >
+          Done
+        </button>
+        <button 
+          onclick="filterTasks('overdue')" 
+          id="filter-overdue"
+        >
+          Overdue
+        </button>
       </section>
 
-      <button class="add-task" onclick="openForm()">add task</button>
-      
-      <div class="popup" id="myForm">
-        <div class="popup-container">
-          
-          <h2>Add task</h2>
-          <input type="text" id="inputfield" placeholder="type here..">
-          
-          <button class="btn" onclick="addlist()">Add</button>
-          <script>
-         function addlist() {
-          
-          let newtask = document.createElement("div");
-          let getvalue =  document.getElementById("inputfield").value;
-          newtask.textContent = getvalue;
-          document.getElementById("column_1").appendChild(newtask);
-          newtask.classList.add("task-card1");
-        }
-          </script>
-          <button class="btn close" onclick="closeForm()">Close</button>
-        </div>
-      </div>
-
-      <script>
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-
-      const tasks = `[
-  {
-    "status": "In Progress",
-    "dueDate": "2025-06-18",
-    "title": "Update user settings module",
-    "description": "Revamp the settings UI and handle edge cases.",
-    "startDate": "2025-05-28"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-01",
-    "title": "Fix login bug",
-    "description": "Resolved issue with token refresh logic.",
-    "startDate": "2025-05-20"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-12",
-    "title": "Write API documentation",
-    "description": "Document all RESTful endpoints and request samples.",
-    "startDate": "2025-06-05"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-04",
-    "title": "Email notifications",
-    "description": "Enable templated emails for task updates.",
-    "startDate": "2025-05-15"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-15",
-    "title": "Mobile responsiveness",
-    "description": "Make dashboard layout responsive for mobile.",
-    "startDate": "2025-06-01"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-05",
-    "title": "Database migration",
-    "description": "Migrate user table to new schema with foreign keys.",
-    "startDate": "2025-05-29"
-  },
-  {
-    "status": "In Progress",
-    "dueDate": "2025-06-10",
-    "title": "Setup Redis cache",
-    "description": "Cache auth tokens for faster validation.",
-    "startDate": "2025-06-01"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-07",
-    "title": "Refactor user controller",
-    "description": "Break into smaller reusable services.",
-    "startDate": "2025-05-24"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-20",
-    "title": "Create test cases",
-    "description": "Add unit and integration tests for APIs.",
-    "startDate": "2025-06-06"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-05",
-    "title": "Optimize queries",
-    "description": "Improve performance of data fetch logic.",
-    "startDate": "2025-05-30"
-  },
-  {
-    "status": "In Progress",
-    "dueDate": "2025-06-11",
-    "title": "Integrate SSO login",
-    "description": "Allow authentication via OAuth providers.",
-    "startDate": "2025-06-03"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-06",
-    "title": "Fix broken links",
-    "description": "Check all static pages and update old URLs.",
-    "startDate": "2025-05-26"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-13",
-    "title": "User avatar upload",
-    "description": "Allow profile pictures via S3.",
-    "startDate": "2025-06-05"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-05",
-    "title": "Log cleanup script",
-    "description": "Delete logs older than 30 days automatically.",
-    "startDate": "2025-05-25"
-  },
-  {
-    "status": "In Progress",
-    "dueDate": "2025-06-09",
-    "title": "Implement dark mode",
-    "description": "Allow user toggle between light/dark themes.",
-    "startDate": "2025-06-02"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-03",
-    "title": "Add contact form",
-    "description": "Send form responses to backend API.",
-    "startDate": "2025-05-27"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-14",
-    "title": "Billing logic update",
-    "description": "Handle multiple payment plans correctly.",
-    "startDate": "2025-06-06"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-05",
-    "title": "Accessibility audit",
-    "description": "Ensure compliance with WCAG standards.",
-    "startDate": "2025-05-31"
-  },
-  {
-    "status": "In Progress",
-    "dueDate": "2025-06-08",
-    "title": "Enable push notifications",
-    "description": "Add support for web push alerts.",
-    "startDate": "2025-06-01"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-19",
-    "title": "Graph visualization",
-    "description": "Show analytics using D3 or Chart.js.",
-    "startDate": "2025-06-07"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-04",
-    "title": "Review PR #112",
-    "description": "Code review and merge frontend fixes.",
-    "startDate": "2025-05-28"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-02",
-    "title": "MFA authentication",
-    "description": "Add support for OTP-based login.",
-    "startDate": "2025-05-23"
-  },
-  {
-    "status": "In Progress",
-    "dueDate": "2025-06-17",
-    "title": "User role permissions",
-    "description": "Restrict views based on user role.",
-    "startDate": "2025-06-04"
-  },
-  {
-    "status": "Pending",
-    "dueDate": "2025-06-21",
-    "title": "Webhook support",
-    "description": "Notify external services on data update.",
-    "startDate": "2025-06-08"
-  },
-  {
-    "status": "Done",
-    "dueDate": "2025-06-05",
-    "title": "Refine onboarding flow",
-    "description": "Guide new users with a step-by-step wizard.",
-    "startDate": "2025-05-30"
-  }
-]`;
-
-
-let allTasks=["Make a news Homepage","Make Wireframe & Sketch","Website redesign"]
-
-
- function renderAlltasks() { 
-    
-   const tasksobj = JSON.parse(tasks);  
- let alltasks = `<h3>All Tasks</h3>` + [...allTasks.map(allTasks => `<div class="task-card1">${allTasks}</div>`), ...tasksobj.map(tasks => `<div class="task-card1">${tasks.title}</div>`)].join("");
- console.log(allTasks);
- 
-console.log(alltasks)
-  document.getElementById("column_1").innerHTML=alltasks;
-  
- 
-
- }
-
-  //const obj = JSON.parse(tasks);
-  //let taskname=obj[2].title;
-  //document.createElement("task-card1").innerHTML=taskname;
-  //taskname.textContent = obj[2].title;
-  //document.getElementById("task-card1").appendChild(taskname);       
-  //console.log(obj.length)
-    </script>
-
-      <section class="task-board" >
-        <div id="column_1" > 
-
-
-        </div>
-        <div id="column_2">
-          <h3>In Progress</h3>
-          <div class="task-card">HOLD</div>
-          <div class="task-card">completed</div>
-          <div class="task-card">Working</div>
-        </div>
-        <div id="column_3">
-          <h3>Done</h3>
-          <div class="task-card">Error</div>
-          <div class="task-card">Success</div>
-          <div class="task-card">Working</div>
-        </div>
-      </section>
-
-      <div class="chart-container">
-        <h3>Tasks by Status</h3>
-        <div class="pie-chart"></div>
-        <div class="legend">
-          <div><div class="color-box todo"></div> To Do</div>
-          <div><span class="color-box inprogress"></span> In Progress</div>
-          <div><span class="color-box done"></span> Done</div>
-        </div>
+      <!-- Task Table -->
+      <div class="task-table-container">
+        <table class="task-table" id="taskTable">
+          <thead>
+            <tr>
+              <th>Task Title</th>
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>Start Date</th>
+            </tr>
+          </thead>
+          <tbody id="taskTableBody">
+            <!-- Tasks will be populated here by JavaScript -->
+          </tbody>
+        </table>
       </div>
       
     </main>
   </div>
-  
+
+  <!-- JavaScript -->
+  <script src="dashboard.js"></script>
 </body>
 </html>
